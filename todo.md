@@ -1,0 +1,5 @@
+- [x] initialize project
+- [x] choose unit testing framework
+- [x] create basic folder structure with initial scripts
+- [ ] add insert functionality to binary tree structure
+- [ ] test insert functionality for different data types
