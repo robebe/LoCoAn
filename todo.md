@@ -2,5 +2,11 @@
 - [x] choose unit testing framework
 - [x] create basic folder structure with initial scripts
 - [ ] add insert functionality to binary tree structure
+- [ ] tests and functionality for representation of tree
 - [ ] test insert functionality for different data types
-
+- [ ] LCA
+- [ ] functionality, exceptions and testing for different data types in tree structure
+- [ ] optional parameters for function call main.py: visualize tree, print tree as list, supply numbers for lca, quit, continue
+- [ ] define prerequesites in README
+- [ ] write main script in python with optional parameters
+- [ ] add shell script with demo 
