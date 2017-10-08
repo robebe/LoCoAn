@@ -35,6 +35,13 @@ class TestBinaryTree(unittest.TestCase):
         self.bt.insertNode(1)
         self.assertEqual(self.bt.size, 4)
 
+    def test_insertion(self):
+        self.bt.reset()
+        self.assertEqual(self.bt.size, 0)
+        for num in self.numbers:
+            self.bt.insertNode(num)
+        self.assertEqual(self.bt.size, 10)
+        self.assertTrue(self.bt.root.val==50)
 
 if __name__=="__main__":
     unittest.main()
