@@ -1,0 +1,5 @@
+# ignore tryout
+/tryout/*
+
+# ignore pycache
+*/__pycache__/*
