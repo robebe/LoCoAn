@@ -1,11 +1,7 @@
+#!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
+
 import random
-
-
-class Node:
-    def __init__(self,val):
-        self.val = val
-        self.left = self.right = None
-
 
 class BinaryTree:
     def __init__(self):
