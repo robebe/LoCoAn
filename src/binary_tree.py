@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 import random
+from node import Node
 
 class BinaryTree:
     def __init__(self):
@@ -19,7 +20,23 @@ class BinaryTree:
         thereby making it possible to sort the types in descending order from left to right
         into the tree structure.
         """
-        pass
+        self.root = self._treeInsert(self.root, val)
+        self.size += 1
+
+    def _treeInsert(self, node, val):
+        if node is None:
+            return Node(val)
+        if (val > node.val):
+            if (node.left is not None):
+                self._treeInsert(node.left, val)
+            else:
+                node.left = Node(val)
+        else:
+            if (node.right is not None):
+                self._treeInsert(node.right, val)
+            else:
+                node.right = Node(val)
+        return self.root
 
     def visualize(self):
         """
@@ -39,6 +56,12 @@ class BinaryTree:
         returns LCA of node1 and nod2
         """
         pass
+
+    def reset(self):
+        """
+        reset tree structure to initial state
+        """
+        self.root = None
 
 """
 if __name__=="__main__":
