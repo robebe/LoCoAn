@@ -3,4 +3,4 @@
 - [x] create basic folder structure with initial scripts
 - [ ] add insert functionality to binary tree structure
 - [ ] test insert functionality for different data types
-- [ ] check out **format**, @mentions, #references
+
