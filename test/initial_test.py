@@ -1,5 +1,9 @@
 import unittest
+import os, sys
+src_path = os.path.abspath(os.path.join('..','src'))
+sys.path.append(src_path)
 from binary_tree import Node, BinaryTree
+
 
 
 class TestBinaryTree(unittest.TestCase):
