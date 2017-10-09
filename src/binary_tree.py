@@ -57,11 +57,7 @@ class BinaryTree:
         """
         pass
 
-    def reset(self):
-        """
-        reset tree structure to initial state
-        """
-        self.root = None
+
 
 """
 if __name__=="__main__":
