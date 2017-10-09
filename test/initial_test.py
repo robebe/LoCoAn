@@ -35,7 +35,7 @@ class TestBinaryTree(unittest.TestCase):
         self.bt.insertNode(1)
         self.assertEqual(self.bt.size, 4)
 
-    def test_insertion_order(self):
+    def test_leftist_insertion_order(self):
         numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10]
         self.assertEqual(self.bt.size, 0)
         for num in numbers:
@@ -43,10 +43,15 @@ class TestBinaryTree(unittest.TestCase):
         self.assertEqual(self.bt.size, len(numbers))
         self.assertTrue(self.bt.root.val==50)
         self.assertTrue(self.bt.root.left.val==43)
+        self.assertTrue(self.bt.root.left.left.val==29)
+        self.assertTrue(self.bt.root.left.left.left.val==15)
+        self.assertTrue(self.bt.root.left.left.right.val==33)
+        self.assertTrue(self.bt.root.left.left.left.left.val==10)
+        self.assertTrue(self.bt.root.right.val==52)
+        self.assertTrue(self.bt.root.right.right.val==53)
+        self.assertTrue(self.bt.root.right.right.right.val==62)
+        self.assertTrue(self.bt.root.right.right.right.right.val==76)
 
-    def testLeftist(self):
-        #self.assertTrue(self.bt.root.val==self.numbers[0])
-        pass
 
 if __name__=="__main__":
     unittest.main()
