@@ -26,7 +26,7 @@ class BinaryTree:
     def _treeInsert(self, node, val):
         if node is None:
             return Node(val)
-        if (val > node.val):
+        if (val < node.val):
             if (node.left is not None):
                 self._treeInsert(node.left, val)
             else:
