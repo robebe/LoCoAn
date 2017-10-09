@@ -1,7 +1,7 @@
 - [x] initialize project
 - [x] choose unit testing framework
 - [x] create basic folder structure with initial scripts
-- [ ] add insert functionality to binary tree structure
+- [x] add insert functionality to binary tree structure
 - [ ] tests and functionality for representation of tree
 - [ ] test insert functionality for different data types
 - [ ] LCA
