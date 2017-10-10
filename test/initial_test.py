@@ -40,7 +40,10 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertEqual(self.bt.size, 4)
 
     def test_leftist_insertion_order(self):
-        numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10,10]
+        """
+        test and demonstrate node access via .left/ .right
+        """
+        numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10, 10]
         self.assertEqual(self.bt.size, 0)
         for num in numbers:
             self.bt.insertNode(num)
