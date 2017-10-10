@@ -10,7 +10,7 @@ from binary_tree import Node, BinaryTree
 
 
 
-class TestBinaryTree(unittest.TestCase):
+class BinaryTreeInitial(unittest.TestCase):
 
     def setUp(self):
         self.bt = BinaryTree()
