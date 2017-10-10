@@ -12,7 +12,7 @@ from binary_tree import Node, BinaryTree
 
 class BinaryTreeInitial(unittest.TestCase):
     """
-    This inital test script is supposed to test basic 
+    This inital test script is supposed to test basic
     insertion for the BinaryTree class.
     """
 
@@ -40,7 +40,7 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertEqual(self.bt.size, 4)
 
     def test_leftist_insertion_order(self):
-        numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10]
+        numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10,10]
         self.assertEqual(self.bt.size, 0)
         for num in numbers:
             self.bt.insertNode(num)
@@ -51,6 +51,7 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertTrue(self.bt.root.left.left.left.val==15)
         self.assertTrue(self.bt.root.left.left.right.val==33)
         self.assertTrue(self.bt.root.left.left.left.left.val==10)
+        self.assertTrue(self.bt.root.left.left.left.left.left.val==10)
         self.assertTrue(self.bt.root.right.val==52)
         self.assertTrue(self.bt.root.right.right.val==53)
         self.assertTrue(self.bt.root.right.right.right.val==62)
