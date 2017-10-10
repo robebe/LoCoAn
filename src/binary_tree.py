@@ -66,7 +66,7 @@ class BinaryTree:
 
     def getLCA(self, node1, node2):
         """
-        returns LCA of node1 and nod2
+        returns LCA of node1 and node2 (main purpose of this project)
         """
         pass
 
