@@ -11,6 +11,10 @@ from binary_tree import Node, BinaryTree
 
 
 class BinaryTreeInitial(unittest.TestCase):
+    """
+    This inital test script is supposed to test basic 
+    insertion for the BinaryTree class.
+    """
 
     def setUp(self):
         self.bt = BinaryTree()
