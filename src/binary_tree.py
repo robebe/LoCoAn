@@ -46,10 +46,23 @@ class BinaryTree:
 
     def asList(self):
         """
+        simple list representation of tree.
         returns list of tuples, each containing the node value and an integer value indicating the level
         (eg. if self.root is set to 3 the first item of the list should be (3,0)).
         """
-        pass
+        tree_list = self._treeList(self.root)
+        return tree_list
+
+    def _treeList(self, node, ret=[], indx=0):
+        if node is None:
+            return ret
+        else:
+            ret.insert(indx, (node.val, indx))
+            if node.left or node.right:
+                indx +=1
+                self._treeList(node.left, ret, indx)
+                self._treeList(node.right, ret, indx)
+        return ret
 
     def getLCA(self, node1, node2):
         """
