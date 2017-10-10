@@ -18,8 +18,9 @@ class BinaryTreeRepr(unittest.TestCase):
 
     def test_listrepr(self):
         numbers = [49, 42, 4, 32, 57, 100, 99, 20, 89, 24, 79, 83]
+        [self.bt.insertNode(num) for num in numbers]
         list_repr = '[(49, 0), (57, 1), (100, 2), (99, 3), (89, 4), (79, 5), (83, 6), (42, 1), (4, 2), (32, 3), (20, 4), (24, 5)]'
-        self.assertEqual(list_repr, self.bt.asList())
+        self.assertEqual(list_repr, str(self.bt.asList()))
 
 
 
