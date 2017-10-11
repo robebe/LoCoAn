@@ -22,8 +22,12 @@ class BinaryTreeRepr(unittest.TestCase):
         list_repr = '[(49, 0), (57, 1), (100, 2), (99, 3), (89, 4), (79, 5), (83, 6), (42, 1), (4, 2), (32, 3), (20, 4), (24, 5)]'
         self.assertEqual(list_repr, str(self.bt.asList()))
 
-    def test_stringrepr(self):
-        pass
-        
+    def test_visualization(self):
+        """
+        self explanatory visualization of tree is directly printed to the outstream
+        and is therefore of type None.
+        """
+        self.assertTrue(type(self.bt.printT()) == None)
+
 if __name__=="__main__":
     unittest.main()
