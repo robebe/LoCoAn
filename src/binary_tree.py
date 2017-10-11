@@ -42,7 +42,14 @@ class BinaryTree:
         """
         tree-like representation of the tree structure
         """
-        pass
+        return self._treeVisualize(self.root)
+
+    def _treeVisualize(self, node, ret=[], space=0):
+        if node:
+            self._treeVisualize(node.left, ret, space=space+4)
+            ret.append('{}{}{}'.format(" "*space, "-->", node.val))
+            self._treeVisualize(node.right, ret, space=space+4)
+        return ret
 
     def asList(self):
         """
