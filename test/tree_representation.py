@@ -23,11 +23,10 @@ class BinaryTreeRepr(unittest.TestCase):
         self.assertEqual(list_repr, str(self.bt.asList()))
 
     def test_visualization(self):
-        """
-        self explanatory visualization of tree is directly printed to the outstream
-        and is therefore of type None.
-        """
-        self.assertTrue(type(self.bt.printT()) == None)
+        visual_repr = self.bt.visualize()
+        self.assertTrue(type(visual_repr) is list)
+        self.assertEqual(len(visual_repr), self.bt.size)
+
 
 if __name__=="__main__":
     unittest.main()
