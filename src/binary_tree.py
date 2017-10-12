@@ -71,13 +71,23 @@ class BinaryTree:
                 self._treeList(node.right, ret, indx)
         return ret
 
-    def getLCA(self, node1, node2):
+    def getLCA(self, val1, val2):
         """
         returns LCA of node1 and node2 (main purpose of this project)
         """
-        pass
+        lca = self._treeLCA(self.root, val1, val2).val
+        return lca
 
-
+    def _treeLCA(self, top, val1, val2):
+        if not top:
+            return None
+        if top.val == val1 or top.val == val2:
+            return top
+        left_lca = self._treeLCA(top.left, val1, val2)
+        right_lca = self._treeLCA(top.right, val1, val2)
+        if left_lca and right_lca:
+            return top
+        return left_lca or right_lca
 
 """
 if __name__=="__main__":
