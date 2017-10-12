@@ -75,10 +75,13 @@ class BinaryTree:
         """
         returns LCA of node1 and node2 (main purpose of this project)
         """
-        lca = self._treeLCA(self.root, val1, val2).val
-        if visualize:
-            return 'LCA({},{}) = {}'.format(val1, val2, lca)
-        return lca
+        try:
+            lca = self._treeLCA(self.root, val1, val2).val
+            if visualize:
+                return 'LCA({},{}) = {}'.format(val1, val2, lca)
+            return lca
+        except AttributeError as e:
+            print('The numbers specified ({},{}) do not occur in the tree:\n'.format(val1, val2), e)
 
     def _treeLCA(self, top, val1, val2):
         if not top:
@@ -90,10 +93,3 @@ class BinaryTree:
         if left_lca and right_lca:
             return top
         return left_lca or right_lca
-
-"""
-if __name__=="__main__":
-    n1 = Node(3)
-    bt = BinaryTree()
-    bt.insertNode(n1)
-"""
