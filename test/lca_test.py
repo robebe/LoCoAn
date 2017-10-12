@@ -26,9 +26,8 @@ class BinaryTreeLCA(unittest.TestCase):
         self.assertEqual(self.bt.getLCA(51,79), 51)
         self.assertEqual(self.bt.getLCA(47,32), 35)
         self.assertEqual(self.bt.getLCA(5,67), 51)
-        #self.assertRaises(self.bt.getLCA(67, 6), AttributeError)
-        with self.assertRaises(AttributeError):
-            self.bt.getLCA(67,6)
+        self.assertRaises(AttributeError, self.bt.getLCA(157, 1))
+
     def test_lca_repr(self):
         self.assertEqual(self.bt.getLCA(79,67, visualize=True), 'LCA(79,67) = 79')
 
