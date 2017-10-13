@@ -8,8 +8,7 @@ from binary_tree import Node, BinaryTree
 
 class BinaryTreeRepr(unittest.TestCase):
     """
-    Script to test representation of BinaryTree
-    class as list and tree-like string
+    Script to test representation of BinaryTree class.
     """
 
     def setUp(self):
