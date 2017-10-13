@@ -63,6 +63,7 @@ class BinaryTreeInitial(unittest.TestCase):
         """
         test insertion for different data types
         """
+        self.assertRaises(ValueError, self.bt.insertNode([1,2,3]))
         chars = ['m', 'b', 'a', 'A', 'x', 'f', 'l', 'k', 't', 'T', 'W', 'w']
         [self.bt.insertNode(ch) for ch in chars]
         for node in self.bt.visualize():
