@@ -15,11 +15,12 @@ class BinaryTree:
 
     def insertNode(self, val):
         """
-        A value of type number or string should be inserted.
-        Once a value type is chosen, all consecutive insertions should be of the same type,
-        thereby making it possible to sort the types in descending order from left to right
+        A value of type int, string or float should be inserted.
+        Values will be inserted in descending order from left to right
         into the tree structure.
         """
+        if not(type(val) == int or type(val) == str or type(val) == float):
+            raise(ValueError('Only values of type int, string or float permitted.'))
         try:
             self.root = self._treeInsert(self.root, val)
             self.size += 1
