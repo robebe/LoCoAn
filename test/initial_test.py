@@ -45,8 +45,7 @@ class BinaryTreeInitial(unittest.TestCase):
         """
         numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10, 10]
         self.assertEqual(self.bt.size, 0)
-        for num in numbers:
-            self.bt.insertNode(num)
+        [self.bt.insertNode(num) for num in numbers]
         self.assertEqual(self.bt.size, len(numbers))
         self.assertTrue(self.bt.root.val==50)
         self.assertTrue(self.bt.root.left.val==43)
@@ -59,6 +58,22 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertTrue(self.bt.root.right.right.val==53)
         self.assertTrue(self.bt.root.right.right.right.val==62)
         self.assertTrue(self.bt.root.right.right.right.right.val==76)
+
+    def test_datatypes(self):
+        """
+        test insertion for different datatypes
+        """
+        for node in self.bt.visualize():
+            print(node)
+        chars = ['m', 'b', 'a', 'A', 'x', 'f', 'l', 'k', 't', 'T', 'W', 'w']
+        [self.bt.insertNode(ch) for ch in chars]
+        self.assertEqual(self.bt.root.val, 'm')
+        self.assertEqual(self.bt.root.left.val, 'b')
+        self.assertEqual(self.bt.root.right.val, 'x')
+        self.assertEqual(self.bt.root.left.left.left.val, 'A')
+        self.assertEqual(self.bt.root.left.left.left.right.val, 'T')
+        self.assertRaises(TypeError, self.bt.insertNode(1))
+
 
 
 if __name__=="__main__":
