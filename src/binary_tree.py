@@ -20,8 +20,11 @@ class BinaryTree:
         thereby making it possible to sort the types in descending order from left to right
         into the tree structure.
         """
-        self.root = self._treeInsert(self.root, val)
-        self.size += 1
+        try:
+            self.root = self._treeInsert(self.root, val)
+            self.size += 1
+        except TypeError as e:
+            print("Incompatible data type insertion:\n",e)
 
     def _treeInsert(self, node, val):
         if node is None:
