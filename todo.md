@@ -3,9 +3,9 @@
 - [x] create basic folder structure with initial scripts
 - [x] add insert functionality to binary tree structure
 - [x] tests and functionality for representation of tree
-- [ ] test insert functionality for different data types
+- [x] test insert functionality for different data types
 - [x] LCA
-- [ ] functionality, exceptions and testing for different data types in tree structure
+- [x] functionality, exceptions and testing for different data types in tree structure
 - [ ] optional parameters for function call main.py: visualize tree (demonstrate!!), print tree as list, supply numbers for lca, quit, continue
 - [ ] define prerequesites in README
 - [ ] add shell script with demo 
