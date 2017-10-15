@@ -65,15 +65,18 @@ class BinaryTreeInitial(unittest.TestCase):
             self.bt.insertNode([1,2,3])
         chars = ['m', 'b', 'a', 'A', 'x', 'f', 'l', 'k', 't', 'T', 'W', 'w']
         [self.bt.insertNode(ch) for ch in chars]
-        for node in self.bt.visualize():
-            print(node)
         self.assertEqual(self.bt.root.val, 'm')
         self.assertEqual(self.bt.root.left.val, 'b')
         self.assertEqual(self.bt.root.right.val, 'x')
         self.assertEqual(self.bt.root.left.left.left.val, 'A')
         self.assertEqual(self.bt.root.left.left.left.right.val, 'T')
+        #redirect output-stream to skip TypeError message
+        _stdout = sys.stdout
+        null = open(os.devnull, 'w')
+        sys.stdout = null
         self.assertRaises(TypeError, self.bt.insertNode(1))
-
+        null.close()
+        sys.stdout = _stdout
 
 
 

@@ -18,15 +18,19 @@ class BinaryTreeLCA(unittest.TestCase):
 
     def test_lca(self):
         visual_repr = self.bt.visualize()
-        for node in visual_repr:
-            print(node)
         self.assertEqual(self.bt.getLCA(79,67), 79)
         self.assertEqual(self.bt.getLCA(67,79), 79)
         self.assertEqual(self.bt.getLCA(49,51), 51)
         self.assertEqual(self.bt.getLCA(51,79), 51)
         self.assertEqual(self.bt.getLCA(47,32), 35)
         self.assertEqual(self.bt.getLCA(5,67), 51)
+        #redirect output-stream to skip TypeError message
+        _stdout = sys.stdout
+        null = open(os.devnull, 'w')
+        sys.stdout = null
         self.assertRaises(AttributeError, self.bt.getLCA(157, 1))
+        null.close()
+        sys.stdout = _stdout
 
     def test_lca_repr(self):
         self.assertEqual(self.bt.getLCA(79,67, visualize=True), 'LCA(79,67) = 79')
