@@ -4,7 +4,11 @@
 import unittest
 import random
 import os, sys
+"""
 src_path = os.path.abspath(os.path.join('..','src'))
+sys.path.append(src_path)
+"""
+src_path = os.path.abspath('src')
 sys.path.append(src_path)
 from binary_tree import Node, BinaryTree
 
@@ -70,7 +74,7 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertEqual(self.bt.root.right.val, 'x')
         self.assertEqual(self.bt.root.left.left.left.val, 'A')
         self.assertEqual(self.bt.root.left.left.left.right.val, 'T')
-        #redirect output-stream to skip TypeError message
+        #redirect output-stream to dev/null-device to skip TypeError message
         _stdout = sys.stdout
         null = open(os.devnull, 'w')
         sys.stdout = null

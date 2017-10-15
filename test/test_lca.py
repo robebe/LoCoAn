@@ -2,7 +2,11 @@
 # -*- coding: utf-8 -*-
 import unittest
 import os, sys
+"""
 src_path = os.path.abspath(os.path.join('..','src'))
+sys.path.append(src_path)
+"""
+src_path = os.path.abspath('src')
 sys.path.append(src_path)
 from binary_tree import Node, BinaryTree
 
@@ -24,7 +28,7 @@ class BinaryTreeLCA(unittest.TestCase):
         self.assertEqual(self.bt.getLCA(51,79), 51)
         self.assertEqual(self.bt.getLCA(47,32), 35)
         self.assertEqual(self.bt.getLCA(5,67), 51)
-        #redirect output-stream to skip TypeError message
+        #redirect output-stream to dev/null-device to skip TypeError message
         _stdout = sys.stdout
         null = open(os.devnull, 'w')
         sys.stdout = null
