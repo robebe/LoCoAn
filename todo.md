@@ -6,6 +6,5 @@
 - [x] test insert functionality for different data types
 - [x] LCA
 - [x] functionality, exceptions and testing for different data types in tree structure
-- [ ] optional parameters for function call main.py: visualize tree (demonstrate!!), print tree as list, supply numbers for lca, quit, continue
 - [ ] define prerequesites in README
 - [ ] add shell script with demo 
