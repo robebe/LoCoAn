@@ -41,18 +41,6 @@ class BinaryTree:
                 node.right = Node(val)
         return self.root
 
-    def visualize(self):
-        """
-        tree-like representation of the tree structure
-        """
-        return self._treeVisualize(self.root)
-
-    def _treeVisualize(self, node, ret=[], space=0):
-        if node:
-            self._treeVisualize(node.left, ret, space=space+4)
-            ret.append('{}{}{}'.format(" "*space, "-->", node.val))
-            self._treeVisualize(node.right, ret, space=space+4)
-        return ret
 
     def asList(self):
         """
@@ -73,13 +61,13 @@ class BinaryTree:
                 self._treeList(node.right, ret, indx)
         return ret
 
-    def getLCA(self, val1, val2, visualize=False):
+    def getLCA(self, val1, val2, string_repr=False):
         """
         returns LCA of node1 and node2
         """
         try:
             lca = self._treeLCA(self.root, val1, val2).val
-            if visualize:
+            if string_repr:
                 return 'LCA({},{}) = {}'.format(val1, val2, lca)
             return lca
         except AttributeError as e:
@@ -95,3 +83,16 @@ class BinaryTree:
         if left_lca and right_lca:
             return top
         return left_lca or right_lca
+
+    def visualize(self):
+        """
+        tree-like representation of the tree structure
+        """
+        return self._treeVisualize(self.root)
+
+    def _treeVisualize(self, node, ret=[], space=0):
+        if node:
+            self._treeVisualize(node.left, ret, space=space+4)
+            ret.append('{}{}{}'.format(" "*space, "-->", node.val))
+            self._treeVisualize(node.right, ret, space=space+4)
+        return ret
