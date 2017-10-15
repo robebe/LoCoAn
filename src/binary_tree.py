@@ -14,9 +14,9 @@ class BinaryTree:
 
     def insertNode(self, val):
         """
-        A value of type int, string or float should be inserted.
-        Values will be inserted in descending order from left to right
-        into the tree structure.
+        a value of type int, string or float should be inserted
+        values will be inserted in ascending order from left to right
+        into the tree structure
         """
         if not(type(val) == int or type(val) == str or type(val) == float):
             raise(ValueError('Only values of type int, string or float permitted.'))
@@ -56,9 +56,8 @@ class BinaryTree:
 
     def asList(self):
         """
-        simple list representation of tree.
+        simple list representation of tree
         returns list of tuples, each containing the node value and an integer value indicating the level
-        (eg. if self.root is set to 3 the first item of the list should be (3,0)).
         """
         tree_list = self._treeList(self.root)
         return tree_list
@@ -76,7 +75,7 @@ class BinaryTree:
 
     def getLCA(self, val1, val2, visualize=False):
         """
-        returns LCA of node1 and node2 (main purpose of this project)
+        returns LCA of node1 and node2
         """
         try:
             lca = self._treeLCA(self.root, val1, val2).val
