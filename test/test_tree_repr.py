@@ -9,7 +9,7 @@ sys.path.append(src_path)
 """
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
-from binary_tree import Node, BinaryTree
+from binary_tree import Node, BinaryTree#, visualize
 
 class BinaryTreeRepr(unittest.TestCase):
     """

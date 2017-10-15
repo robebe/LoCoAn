@@ -21,7 +21,7 @@ class BinaryTreeLCA(unittest.TestCase):
 
 
     def test_lca(self):
-        visual_repr = self.bt.visualize()
+        #visual_repr = self.bt.visualize()
         self.assertEqual(self.bt.getLCA(79,67), 79)
         self.assertEqual(self.bt.getLCA(67,79), 79)
         self.assertEqual(self.bt.getLCA(49,51), 51)
@@ -37,7 +37,7 @@ class BinaryTreeLCA(unittest.TestCase):
         sys.stdout = _stdout
 
     def test_lca_repr(self):
-        self.assertEqual(self.bt.getLCA(79,67, visualize=True), 'LCA(79,67) = 79')
+        self.assertEqual(self.bt.getLCA(79,67, True), 'LCA(79,67) = 79')
 
 if __name__=="__main__":
     unittest.main()
