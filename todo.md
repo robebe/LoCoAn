@@ -7,4 +7,4 @@
 - [x] LCA
 - [x] functionality, exceptions and testing for different data types in tree structure
 - [ ] define prerequesites in README
-- [ ] add shell script with demo 
+- [x] add shell script with demo 
