@@ -4,6 +4,6 @@ This python based project implements one of the many possible solutions to findi
 
 ## Prerequesites
 
-## Run Demo 
+## Run Demo
 
-## Execute with User Input
+## Run Tests
