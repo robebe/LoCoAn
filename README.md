@@ -5,5 +5,3 @@ This python based project implements one of the many possible solutions to findi
 ## Prerequesites
 
 ## Run Demo 
-
-## Execute with User Input
