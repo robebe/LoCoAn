@@ -2,7 +2,6 @@
 # -*- encoding: utf-8 -*-
 
 import unittest
-import random
 import os, sys
 """
 src_path = os.path.abspath(os.path.join('..','src'))
