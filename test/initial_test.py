@@ -12,14 +12,12 @@ from binary_tree import Node, BinaryTree
 
 class BinaryTreeInitial(unittest.TestCase):
     """
-    This inital test script is supposed to test basic
-    insertion for the BinaryTree class.
+    this inital test script is supposed to test basic
+    insertion for the BinaryTree class
     """
 
     def setUp(self):
         self.bt = BinaryTree()
-        #self.numbers = [random.randint(0,100) for i in range(10)]
-        #self.numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10]
 
     def test_type(self):
         """
@@ -75,7 +73,7 @@ class BinaryTreeInitial(unittest.TestCase):
         self.assertEqual(self.bt.root.left.left.left.val, 'A')
         self.assertEqual(self.bt.root.left.left.left.right.val, 'T')
         self.assertRaises(TypeError, self.bt.insertNode(1))
-        
+
 
 
 

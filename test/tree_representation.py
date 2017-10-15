@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 import unittest
 import os, sys
 src_path = os.path.abspath(os.path.join('..','src'))
@@ -8,7 +9,7 @@ from binary_tree import Node, BinaryTree
 
 class BinaryTreeRepr(unittest.TestCase):
     """
-    Script to test representation of BinaryTree class.
+    test representation of BinaryTree class
     """
 
     def setUp(self):
