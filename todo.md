@@ -6,5 +6,5 @@
 - [x] test insert functionality for different data types
 - [x] LCA
 - [x] functionality, exceptions and testing for different data types in tree structure
-- [ ] define prerequesites in README
+- [x] define prerequesites in README
 - [x] add shell script with demo 
