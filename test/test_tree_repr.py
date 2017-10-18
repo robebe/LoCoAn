@@ -1,4 +1,4 @@
-	#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import unittest
@@ -9,7 +9,7 @@ sys.path.append(src_path)
 """
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
-from binary_tree import Node, BinaryTree#, visualize
+from binary_tree import Node, BinaryTree
 
 class BinaryTreeRepr(unittest.TestCase):
     """
