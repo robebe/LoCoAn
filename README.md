@@ -3,6 +3,7 @@
 This python based project implements one of the many possible solutions to finding the Lowest Common Ancestor in a Binary Tree structure. 
 
 ## Prerequesites
+(Note that a GNU/Linux distribution is assumed for the following commands. Changes might apply for macOS or Windows.)
 Have Python 2.7 or later installed on your machine.
 To download this repository open a terminal and enter:
 ```
