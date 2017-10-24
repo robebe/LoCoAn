@@ -31,12 +31,13 @@ class DAGInitial(unittest.TestCase):
         self.assertIsInstance(self.dag, DirectedAcyclicGraph)
 
     def test_insertion_and_size(self):
-
         self.assertEqual(self.dag.size, 1)
         self.dag.add_node(3, 1)
         self.dag.add_node(4, 1)
         self.dag.add_root_node(2, 4)
         self.assertEqual(self.dag.size, 4)
+        self.assertEqual(len(self.dag.graph), self.dag.size)
+        self.assertEqual(len(self.dag.asList()), self.dag.size)
 
     def test_datatypes(self):
         pass
