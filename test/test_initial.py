@@ -38,13 +38,18 @@ class DAGInitial(unittest.TestCase):
         self.assertEqual(self.dag.size, 4)
         self.assertEqual(len(self.dag.graph), self.dag.size)
         self.assertEqual(len(self.dag.asList()), self.dag.size)
-        self.dag.add_node(4, 1)
+        curr_size = self.dag.size
+        self.dag.add_node(4, 1)#this should not work
+        self.assertEqual(self.dag.size, curr_size)
         self.dag.add_node(5, 1)
         self.dag.add_node(7, 5)
         self.dag.add_node(6, 5)
         curr_size = self.dag.size
         self.dag.add_node(6, 3)#this should work although 6 exists already
         self.assertEqual(self.dag.size, curr_size+1)
+        self.dag.add_node(7, 3)
+        self.dag.add_node(5, 4)
+        self.dag.add_root_node(8, 4)
         #print(self.dag.asList())
 
     def test_datatypes(self):
