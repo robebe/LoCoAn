@@ -23,9 +23,14 @@ class DirectedAcyclicGraph:
 
     def add_node(self, val, parent_val):
         if parent_val in self.graph.keys():
+            #add new node
             if not val in self.graph.keys():
                 self.graph[parent_val].append(val)
                 self.graph[val] = []
+                self.size += 1
+            #add edge to existing node pair
+            elif not parent_val in self.graph[val] and not val in self.graph[parent_val]:
+                self.graph[parent_val].append(val)
                 self.size += 1
 
     def asList(self):
