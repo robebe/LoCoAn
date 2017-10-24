@@ -8,3 +8,5 @@
 - [x] functionality, exceptions and testing for different data types in tree structure
 - [x] define prerequesites in README
 - [x] add shell script with demo 
+- [ ] add parent list to node class
+- [ ] change insertNode() to insertLeft() and insertRight()
