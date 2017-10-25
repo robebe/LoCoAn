@@ -39,8 +39,18 @@ class DirectedAcyclicGraph:
         return list(self.graph.items())
 
     def getLCA(self, val1, val2):
+        ret = []
         frst, scnd = self._insertionOrder(val1, val2)
-        
+        #scnd is direct child of frst
+        if scnd in self.graph[frst]:
+            return [frst]
+        for key, vals in self.graph.items():
+            #shared parent node
+            if frst in vals and scnd in vals:
+                ret.append(key)
+
+
+
 
     def _insertionOrder(self, val1, val2):
         """
