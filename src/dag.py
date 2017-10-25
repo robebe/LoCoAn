@@ -39,4 +39,15 @@ class DirectedAcyclicGraph:
         return list(self.graph.items())
 
     def getLCA(self, val1, val2):
-        pass
+        frst, scnd = self._insertionOrder(val1, val2)
+        
+
+    def _insertionOrder(self, val1, val2):
+        """
+        return values in the order they were inserted
+        """
+        index1 = list(self.graph.keys()).index(val1)
+        index2 = list(self.graph.keys()).index(val2)
+        if index1 < index2:
+            return (val1, val2)
+        return (val2, val1)
