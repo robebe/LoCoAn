@@ -52,6 +52,24 @@ class DAGInitial(unittest.TestCase):
         self.dag.add_root_node(8, 4)
         #print(self.dag.asList())
 
+    def test_more_insertion(self):
+        self.assertEqual(self.dag.size, 1)
+        curr_size = self.dag.size
+        self.dag.add_root_node(2, 4)#this should fail
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(3, 1)
+        self.dag.add_node(5, 1)
+        self.dag.add_node(4, 1)
+        self.dag.add_root_node(2, 4)
+        curr_size = self.dag.size
+        self.dag.add_node(3, 4)#this should work
+        self.assertEqual(self.dag.size, curr_size+1)
+        self.dag.add_node(4, 3)#this should fail
+        self.assertEqual(self.dag.size, curr_size+1)
+        self.dag.add_node(2, 1)#this should work
+        self.assertEqual(self.dag.size, curr_size+1+1)
+        print(self.dag.asList())
+
     def test_datatypes(self):
         pass
 
