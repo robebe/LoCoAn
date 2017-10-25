@@ -13,13 +13,13 @@ class DirectedAcyclicGraph:
 
     def add_root_node(self, val, child_val):
         #child value is existent in graph
-        if [child_val in vals for vals in self.graph.values()][0]:
-            #only unique values allowed
+        if child_val in [key for key in self.graph.keys()]:
+            #has to be non existend value
             if not val in self.graph.keys():
                 #no links both to and from the nodes
-                if not val in self.graph[child_val]:
-                    self.graph[val] = [child_val]
-                    self.size += 1
+                #if not val in self.graph[child_val]:
+                self.graph[val] = [child_val]
+                self.size += 1
 
     def add_node(self, val, parent_val):
         if parent_val in self.graph.keys():
