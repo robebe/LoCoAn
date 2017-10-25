@@ -33,7 +33,7 @@ class DirectedAcyclicGraph:
             #make sure both nodes are not connected via a child node (false assumption!!)
             #if len([child for child in self.graph[parent_val] if child in self.graph[val]]) == 0:
                 self.graph[parent_val].append(val)
-                self.size += 1
+                #self.size += 1
 
     def asList(self):
         return list(self.graph.items())
