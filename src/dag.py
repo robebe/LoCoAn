@@ -30,6 +30,8 @@ class DirectedAcyclicGraph:
                 self.size += 1
             #add edge to existing node pair
             elif not parent_val in self.graph[val] and not val in self.graph[parent_val]:
+            #make sure both nodes are not connected via a child node (false assumption!!)
+            #if len([child for child in self.graph[parent_val] if child in self.graph[val]]) == 0:
                 self.graph[parent_val].append(val)
                 self.size += 1
 
