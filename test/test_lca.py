@@ -10,7 +10,7 @@ sys.path.append(src_path)
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
 """
-from binary_tree import Node, BinaryTree
+from dag import DirectedAcyclicGraph
 
 class DAG_LCA(unittest.TestCase):
     """
@@ -22,6 +22,7 @@ class DAG_LCA(unittest.TestCase):
         self.dag.add_node(3,1)
         self.dag.add_node(4,2)
         self.dag.add_node(5,2)
+        self.dag.add_node(5,3)
         self.dag.add_node(6,3)
         self.dag.add_node(7,4)
         self.dag.add_node(8,4)
@@ -53,8 +54,8 @@ class DAG_LCA(unittest.TestCase):
         sys.stdout = _stdout
         """
 
-    def test_lca_repr(self):
-        pass
+    #def test_lca_repr(self):
+        #pass
 
 if __name__=="__main__":
     unittest.main()
