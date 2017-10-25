@@ -16,6 +16,7 @@ Alteration to deal with DAG:
 - [ ] tests for LCA
 - [ ] implement LCA function in DAG class
 - [ ] add exception for failed node insertion -> alter test_initial.py
+- [ ] add tests for _insertionOrder() in test_lca.py
 - [ ] figure out how to deal with other data types
 - [ ] add exceptions
 - [ ] write tests respectively
