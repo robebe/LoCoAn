@@ -45,8 +45,8 @@ class DAGInitial(unittest.TestCase):
         self.dag.add_node(7, 5)
         self.dag.add_node(6, 5)
         curr_size = self.dag.size
-        self.dag.add_node(6, 3)#this should work although 6 exists already
-        self.assertEqual(self.dag.size, curr_size+1)
+        self.dag.add_node(6, 3)#adding additional edge btw existing nodes
+        self.assertEqual(self.dag.size, curr_size)
         self.dag.add_node(7, 3)
         self.dag.add_node(5, 4)
         self.dag.add_root_node(8, 4)
@@ -62,13 +62,13 @@ class DAGInitial(unittest.TestCase):
         self.dag.add_node(4, 1)
         self.dag.add_root_node(2, 4)
         curr_size = self.dag.size
-        self.dag.add_node(3, 4)#this should work
-        self.assertEqual(self.dag.size, curr_size+1)
-        self.dag.add_node(4, 3)#this should fail
-        self.assertEqual(self.dag.size, curr_size+1)
-        self.dag.add_node(2, 1)#this should work
-        self.assertEqual(self.dag.size, curr_size+1+1)
-        print(self.dag.asList())
+        self.dag.add_node(3, 4)#adding additional edge btw existing nodes
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(4, 3)
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(2, 1)
+        self.assertEqual(self.dag.size, curr_size)
+        #print(self.dag.asList())
 
     def test_datatypes(self):
         pass
