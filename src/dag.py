@@ -38,7 +38,7 @@ class DirectedAcyclicGraph:
     def asList(self):
         return list(self.graph.items())
 
-    def getLCA(self, val1, val2):
+    def getLCA2(self, val1, val2):
         ret = []
         frst, scnd = self._insertionOrder(val1, val2)
         #scnd is direct child of frst
@@ -48,16 +48,25 @@ class DirectedAcyclicGraph:
             #shared parent node
             if frst in vals and scnd in vals:
                 ret.append(key)
+        return ret
 
+    def getLCA(self, val1, val2):
+        return list(set(self._dagLCA(val1, val2)))
 
-
-
-    def _insertionOrder(self, val1, val2):
-        """
-        return values in the order they were inserted
-        """
-        index1 = list(self.graph.keys()).index(val1)
-        index2 = list(self.graph.keys()).index(val2)
-        if index1 < index2:
-            return (val1, val2)
-        return (val2, val1)
+    def _dagLCA(self, val1, val2, ret=[]):
+        if val1 in self.graph[val2]:
+            ret.append(val2)
+        elif val2 in self.graph[val1]:
+            ret.append(val1)
+        else:
+            for key, vals in self.graph.items():
+                if val1 and val2 in vals:
+                    ret = [key for key, vals in self.graph.items() if val1 in vals and val2 in vals]
+                    break
+                elif val1 in vals:
+                    val1 = key
+                    self._dagLCA(val1, val2, ret)
+                elif val2 in vals:
+                    val2 = key
+                    self._dagLCA(val1, val2, ret)
+        return ret
