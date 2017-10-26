@@ -54,8 +54,6 @@ class DAG_LCA(unittest.TestCase):
         sys.stdout = _stdout
         """
 
-    #def test_lca_repr(self):
-        #pass
 
 if __name__=="__main__":
     unittest.main()
