@@ -38,35 +38,32 @@ class DirectedAcyclicGraph:
     def asList(self):
         return list(self.graph.items())
 
-    def getLCA2(self, val1, val2):
-        ret = []
-        frst, scnd = self._insertionOrder(val1, val2)
-        #scnd is direct child of frst
-        if scnd in self.graph[frst]:
-            return [frst]
-        for key, vals in self.graph.items():
-            #shared parent node
-            if frst in vals and scnd in vals:
-                ret.append(key)
-        return ret
-
     def getLCA(self, val1, val2):
-        return list(set(self._dagLCA(val1, val2)))
-
-    def _dagLCA(self, val1, val2, ret=[]):
-        if val1 in self.graph[val2]:
-            ret.append(val2)
-        elif val2 in self.graph[val1]:
-            ret.append(val1)
-        else:
-            for key, vals in self.graph.items():
-                if val1 and val2 in vals:
-                    ret = [key for key, vals in self.graph.items() if val1 in vals and val2 in vals]
-                    break
-                elif val1 in vals:
-                    val1 = key
-                    self._dagLCA(val1, val2, ret)
-                elif val2 in vals:
-                    val2 = key
-                    self._dagLCA(val1, val2, ret)
+        self.lca_list = []
+        self._dagLCA(val1, val2)
+        ret = list(set(self.lca_list))
+        if len(ret) > 1:
+            last_found = ret[-1]
+            last_vals = self.graph[last_found]
+            ret = [key for key, vals in self.graph.items() if vals == last_vals]
         return ret
+
+    def _dagLCA(self, val1, val2):
+        for key in reversed(list(self.graph.keys())):
+            vals = self.graph[key]
+            if val1 in self.graph[val2]:
+                self.lca_list.append(val2)
+            elif val2 in self.graph[val1]:
+                self.lca_list.append(val1)
+            elif val1 in vals and val2 in vals:
+                tmp =  [key for key, vals in self.graph.items() if val1 in vals and val2 in vals]
+                for t in tmp:
+                    self.lca_list.append(t)
+            elif val2 in vals:
+                search_for = [key for key, vals in self.graph.items() if val2 in vals]
+                for val2 in search_for:
+                    self._dagLCA(val1, val2)
+            elif val1 in vals:
+                search_for = [key for key, vals in self.graph.items() if val1 in vals]
+                for val1 in search_for:
+                    self._dagLCA(val1, val2)
