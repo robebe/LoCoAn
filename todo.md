@@ -19,6 +19,6 @@ Alteration to deal with DAG:
 - [x] figure out how to deal with other data types
 - [x] add exceptions
 - [x] write tests respectively
-- [ ] adjust comments
+- [x] adjust comments
 - [ ] alter shell scripts
 - [ ] alter readme
