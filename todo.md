@@ -20,5 +20,5 @@ Alteration to deal with DAG:
 - [x] add exceptions
 - [x] write tests respectively
 - [x] adjust comments
-- [ ] alter shell scripts
+- [x] alter shell scripts
 - [ ] alter readme
