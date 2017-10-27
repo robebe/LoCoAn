@@ -3,6 +3,9 @@
 
 from collections import OrderedDict
 
+class InsertException(Exception):
+    def __init__(self, msg):
+        self.msg = msg
 
 class DirectedAcyclicGraph:
 
@@ -12,28 +15,31 @@ class DirectedAcyclicGraph:
         self.size = 1
 
     def add_root_node(self, val, child_val):
-        #child value is existent in graph
-        if child_val in [key for key in self.graph.keys()]:
-            #has to be non existend value
-            if not val in self.graph.keys():
-                #no links both to and from the nodes
-                #if not val in self.graph[child_val]:
-                self.graph[val] = [child_val]
-                self.size += 1
+        try:
+            #child value is existent in graph
+            if child_val in [key for key in self.graph.keys()]:
+                #has to be non existend value
+                if not val in self.graph.keys():
+                    #no links both to and from the nodes
+                    #if not val in self.graph[child_val]:
+                    self.graph[val] = [child_val]
+                    self.size += 1
+        except:
+            raise InsertException("Could not insert given value as root node.")
 
     def add_node(self, val, parent_val):
-        if parent_val in self.graph.keys():
-            #add new node
-            if not val in self.graph.keys():
-                self.graph[parent_val].append(val)
-                self.graph[val] = []
-                self.size += 1
-            #add edge to existing node pair
-            elif not parent_val in self.graph[val] and not val in self.graph[parent_val]:
-            #make sure both nodes are not connected via a child node (false assumption!!)
-            #if len([child for child in self.graph[parent_val] if child in self.graph[val]]) == 0:
-                self.graph[parent_val].append(val)
-                #self.size += 1
+        try:
+            if parent_val in self.graph.keys():
+                #add new node
+                if not val in self.graph.keys():
+                    self.graph[parent_val].append(val)
+                    self.graph[val] = []
+                    self.size += 1
+                #add edge to existing node pair
+                elif not parent_val in self.graph[val] and not val in self.graph[parent_val]:
+                    self.graph[parent_val].append(val)
+        except:
+            raise InsertException("Could not insert given value as node.")
 
     def asList(self):
         return list(self.graph.items())
