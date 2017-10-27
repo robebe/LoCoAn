@@ -16,8 +16,8 @@ from dag import DirectedAcyclicGraph, InsertException
 
 class DAGInitial(unittest.TestCase):
     """
-    this inital test script is supposed to test basic
-    insertion for the directed acyclic graph structure
+    test insertion into graph structure for different scenarios
+    and keeping track of size variable and Exceptions.
     """
 
     def setUp(self):
@@ -62,7 +62,12 @@ class DAGInitial(unittest.TestCase):
         self.assertEqual(self.dag.size, curr_size)
 
     def test_datatypes(self):
-        pass
+        self.dag.add_node(57, 1)
+        with self.assertRaises(ValueError):
+            self.dag.add_node("a", 1)
+            self.dag.add_root_node("a", 1)
+            self.dag.add_node(1.0, 1)
+            self.dag.add_node([], 1)
 
     def test_listrepr(self):
         pass
