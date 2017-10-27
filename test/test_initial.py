@@ -10,7 +10,7 @@ sys.path.append(src_path)
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
 """
-from dag import DirectedAcyclicGraph
+from dag import DirectedAcyclicGraph, InsertException
 
 
 
@@ -25,9 +25,6 @@ class DAGInitial(unittest.TestCase):
 
 
     def test_type(self):
-        """
-        object is of type DirectedAcyclicGraph
-        """
         self.assertIsInstance(self.dag, DirectedAcyclicGraph)
 
     def test_insertion_and_size(self):
@@ -38,9 +35,7 @@ class DAGInitial(unittest.TestCase):
         self.assertEqual(self.dag.size, 4)
         self.assertEqual(len(self.dag.graph), self.dag.size)
         self.assertEqual(len(self.dag.asList()), self.dag.size)
-        curr_size = self.dag.size
-        self.dag.add_node(4, 1)#this should not work
-        self.assertEqual(self.dag.size, curr_size)
+        self.assertRaises(InsertException, self.dag.add_node(4, 1))
         self.dag.add_node(5, 1)
         self.dag.add_node(7, 5)
         self.dag.add_node(6, 5)
@@ -50,13 +45,10 @@ class DAGInitial(unittest.TestCase):
         self.dag.add_node(7, 3)
         self.dag.add_node(5, 4)
         self.dag.add_root_node(8, 4)
-        #print(self.dag.asList())
 
     def test_more_insertion(self):
         self.assertEqual(self.dag.size, 1)
-        curr_size = self.dag.size
-        self.dag.add_root_node(2, 4)#this should fail
-        self.assertEqual(self.dag.size, curr_size)
+        self.assertRaises(InsertException, self.dag.add_root_node(2,4))
         self.dag.add_node(3, 1)
         self.dag.add_node(5, 1)
         self.dag.add_node(4, 1)
@@ -68,7 +60,6 @@ class DAGInitial(unittest.TestCase):
         self.assertEqual(self.dag.size, curr_size)
         self.dag.add_node(2, 1)
         self.assertEqual(self.dag.size, curr_size)
-        #print(self.dag.asList())
 
     def test_datatypes(self):
         pass
