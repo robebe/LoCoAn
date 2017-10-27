@@ -8,7 +8,10 @@ class InsertException(Exception):
         self.msg = msg
 
 class DirectedAcyclicGraph:
-
+    """
+    Directed acyclic graph with all implementations neccessary
+    to get the lowest common ancestor of the graph structure.
+    """
     def __init__(self, root_val=1):
         self.graph = OrderedDict()
         self.graph[root_val] = []
@@ -17,7 +20,6 @@ class DirectedAcyclicGraph:
     def add_root_node(self, val, child_val):
         if not type(val) == int:
             raise ValueError("Only values of type int are allowed.")
-
         try:
             #child value is existent in graph
             if child_val in [key for key in self.graph.keys()]:
