@@ -15,19 +15,23 @@ class DirectedAcyclicGraph:
         self.size = 1
 
     def add_root_node(self, val, child_val):
+        if not type(val) == int:
+            raise ValueError("Only values of type int are allowed.")
+
         try:
             #child value is existent in graph
             if child_val in [key for key in self.graph.keys()]:
                 #has to be non existend value
                 if not val in self.graph.keys():
                     #no links both to and from the nodes
-                    #if not val in self.graph[child_val]:
                     self.graph[val] = [child_val]
                     self.size += 1
         except:
             raise InsertException("Could not insert given value as root node.")
 
     def add_node(self, val, parent_val):
+        if not type(val) == int:
+            raise ValueError("Only values of type int are allowed.")
         try:
             if parent_val in self.graph.keys():
                 #add new node
