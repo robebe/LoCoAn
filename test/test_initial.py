@@ -70,7 +70,11 @@ class DAGInitial(unittest.TestCase):
             self.dag.add_node([], 1)
 
     def test_listrepr(self):
-        pass
+        self.assertEqual(type(self.dag.asList()), list)
+        self.assertEqual(self.dag.size, len(self.dag.asList()))
+        self.dag.add_node(2, 1)
+        self.dag.add_root_node(3, 2)
+        self.assertEqual(self.dag.size, len(self.dag.asList()))
 
 
 
