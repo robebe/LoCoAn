@@ -9,77 +9,72 @@ sys.path.append(src_path)
 """
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
-from binary_tree import Node, BinaryTree
+
+from dag import DirectedAcyclicGraph, InsertException
 
 
 
-class BinaryTreeInitial(unittest.TestCase):
+class DAGInitial(unittest.TestCase):
     """
-    this inital test script is supposed to test basic
-    insertion for the BinaryTree class
+    test insertion into graph structure for different scenarios
+    and keeping track of size variable and Exceptions.
     """
 
     def setUp(self):
-        self.bt = BinaryTree()
+        self.dag = DirectedAcyclicGraph()
+
 
     def test_type(self):
-        """
-        object is of type BinaryTree
-        """
-        self.assertIsInstance(self.bt, BinaryTree)
+        self.assertIsInstance(self.dag, DirectedAcyclicGraph)
 
-    def test_size(self):
-        """
-        check size of tree object
-        """
-        self.assertEqual(self.bt.size, 0)
-        self.bt.insertNode(3)
-        self.assertEqual(self.bt.size, 1)
-        self.bt.insertNode(2)
-        self.bt.insertNode(9)
-        self.bt.insertNode(1)
-        self.assertEqual(self.bt.size, 4)
+    def test_insertion_and_size(self):
+        self.assertEqual(self.dag.size, 1)
+        self.dag.add_node(3, 1)
+        self.dag.add_node(4, 1)
+        self.dag.add_root_node(2, 4)
+        self.assertEqual(self.dag.size, 4)
+        self.assertEqual(len(self.dag.graph), self.dag.size)
+        self.assertEqual(len(self.dag.asList()), self.dag.size)
+        self.assertRaises(InsertException, self.dag.add_node(4, 1))
+        self.dag.add_node(5, 1)
+        self.dag.add_node(7, 5)
+        self.dag.add_node(6, 5)
+        curr_size = self.dag.size
+        self.dag.add_node(6, 3)#adding additional edge btw existing nodes
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(7, 3)
+        self.dag.add_node(5, 4)
+        self.dag.add_root_node(8, 4)
 
-    def test_leftist_insertion_order(self):
-        """
-        test and demonstrate node access via .left/ .right
-        """
-        numbers = [50, 43, 29, 52, 53, 62, 15, 33, 76, 10, 10]
-        self.assertEqual(self.bt.size, 0)
-        [self.bt.insertNode(num) for num in numbers]
-        self.assertEqual(self.bt.size, len(numbers))
-        self.assertTrue(self.bt.root.val==50)
-        self.assertTrue(self.bt.root.left.val==43)
-        self.assertTrue(self.bt.root.left.left.val==29)
-        self.assertTrue(self.bt.root.left.left.left.val==15)
-        self.assertTrue(self.bt.root.left.left.right.val==33)
-        self.assertTrue(self.bt.root.left.left.left.left.val==10)
-        self.assertTrue(self.bt.root.left.left.left.left.left.val==10)
-        self.assertTrue(self.bt.root.right.val==52)
-        self.assertTrue(self.bt.root.right.right.val==53)
-        self.assertTrue(self.bt.root.right.right.right.val==62)
-        self.assertTrue(self.bt.root.right.right.right.right.val==76)
+    def test_more_insertion(self):
+        self.assertEqual(self.dag.size, 1)
+        self.assertRaises(InsertException, self.dag.add_root_node(2,4))
+        self.dag.add_node(3, 1)
+        self.dag.add_node(5, 1)
+        self.dag.add_node(4, 1)
+        self.dag.add_root_node(2, 4)
+        curr_size = self.dag.size
+        self.dag.add_node(3, 4)#adding additional edge btw existing nodes
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(4, 3)
+        self.assertEqual(self.dag.size, curr_size)
+        self.dag.add_node(2, 1)
+        self.assertEqual(self.dag.size, curr_size)
 
     def test_datatypes(self):
-        """
-        test insertion for different data types
-        """
-        with self.assertRaises(ValueError) as warning:
-            self.bt.insertNode([1,2,3])
-        chars = ['m', 'b', 'a', 'A', 'x', 'f', 'l', 'k', 't', 'T', 'W', 'w']
-        [self.bt.insertNode(ch) for ch in chars]
-        self.assertEqual(self.bt.root.val, 'm')
-        self.assertEqual(self.bt.root.left.val, 'b')
-        self.assertEqual(self.bt.root.right.val, 'x')
-        self.assertEqual(self.bt.root.left.left.left.val, 'A')
-        self.assertEqual(self.bt.root.left.left.left.right.val, 'T')
-        #redirect output-stream to dev/null-device to skip TypeError message
-        _stdout = sys.stdout
-        null = open(os.devnull, 'w')
-        sys.stdout = null
-        self.assertRaises(TypeError, self.bt.insertNode(1))
-        null.close()
-        sys.stdout = _stdout
+        self.dag.add_node(57, 1)
+        with self.assertRaises(ValueError):
+            self.dag.add_node("a", 1)
+            self.dag.add_root_node("a", 1)
+            self.dag.add_node(1.0, 1)
+            self.dag.add_node([], 1)
+
+    def test_listrepr(self):
+        self.assertEqual(type(self.dag.asList()), list)
+        self.assertEqual(self.dag.size, len(self.dag.asList()))
+        self.dag.add_node(2, 1)
+        self.dag.add_root_node(3, 2)
+        self.assertEqual(self.dag.size, len(self.dag.asList()))
 
 
 

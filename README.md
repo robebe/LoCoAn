@@ -1,6 +1,5 @@
 # LoCoAn
-#### Implementation of Lowest Common Ancestor in a Binary Tree.
-This python based project implements one of the many possible solutions to finding the Lowest Common Ancestor in a Binary Tree structure. 
+#### Implementation of Lowest Common Ancestor in a directed acyclic graph structure.
 
 ## Prerequesites
 (Note that a GNU/Linux distribution is assumed for the following commands. Changes might apply for macOS or Windows.)
@@ -10,12 +9,6 @@ To download this repository open a terminal and enter:
 git clone https://github.com/robebe/LoCoAn.git
 ```
 
-## Run Demo
-Make *demo.sh* executable and run it by typing:
-```
-chmod +x demo.sh
-./demo.sh
-```
 ## Run Tests
 Run all Unittest scripts contained in folder "./test/" by executing *run_tests.sh*:
 ```
@@ -32,11 +25,10 @@ sys.path.append(src_path)
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
 """
-from binary_tree import Node, BinaryTree
+from dag import DirectedAcyclicGraph
 ```
 The scripts can now be called typing the following command in your terminal:
 ```
 python test_initial.py -v
 python test_lca.py -v
-python test_tree_repr.py -v
 ```

@@ -9,36 +9,40 @@ sys.path.append(src_path)
 """
 src_path = os.path.abspath('src')
 sys.path.append(src_path)
-from binary_tree import Node, BinaryTree
 
-class BinaryTreeLCA(unittest.TestCase):
+from dag import DirectedAcyclicGraph
+
+class DAG_LCA(unittest.TestCase):
     """
-    test lowest common ancestor function of BinaryTree class
+    test lowest common ancestor function of directed acyclic graph structure
     """
+
     def setUp(self):
-        self.bt = BinaryTree()
-        numbers = [51, 79, 49, 5, 35, 36, 46, 47, 67, 31, 32, 3]
-        [self.bt.insertNode(num) for num in numbers]
-
+        self.dag = DirectedAcyclicGraph()
+        self.dag.add_node(2,1)
+        self.dag.add_node(3,1)
+        self.dag.add_node(4,2)
+        self.dag.add_node(5,2)
+        self.dag.add_node(5,3)
+        self.dag.add_node(6,3)
+        self.dag.add_node(7,4)
+        self.dag.add_node(8,4)
+        self.dag.add_node(9,5)
+        self.dag.add_node(10,5)
+        self.dag.add_node(9,6)
+        self.dag.add_node(10,6)
+        self.dag.add_node(11,9)
+        self.dag.add_node(11,10)
+        self.dag.add_root_node(12,4)
 
     def test_lca(self):
-        #visual_repr = self.bt.visualize()
-        self.assertEqual(self.bt.getLCA(79,67), 79)
-        self.assertEqual(self.bt.getLCA(67,79), 79)
-        self.assertEqual(self.bt.getLCA(49,51), 51)
-        self.assertEqual(self.bt.getLCA(51,79), 51)
-        self.assertEqual(self.bt.getLCA(47,32), 35)
-        self.assertEqual(self.bt.getLCA(5,67), 51)
-        #redirect output-stream to dev/null-device to skip TypeError message
-        _stdout = sys.stdout
-        null = open(os.devnull, 'w')
-        sys.stdout = null
-        self.assertRaises(AttributeError, self.bt.getLCA(157, 1))
-        null.close()
-        sys.stdout = _stdout
+        self.assertEqual(self.dag.getLCA(9,11), [9])
+        self.assertEqual(self.dag.getLCA(11,9), [9])
+        self.assertEqual(self.dag.getLCA(9,10), [5,6])
+        self.assertEqual(self.dag.getLCA(10,3), [3])
+        self.assertEqual(self.dag.getLCA(7,10), [2])
+        self.assertEqual(self.dag.getLCA(12,10), [])
 
-    def test_lca_repr(self):
-        self.assertEqual(self.bt.getLCA(79,67, True), 'LCA(79,67) = 79')
 
 if __name__=="__main__":
     unittest.main()
